@@ -1,0 +1,4 @@
+suites:
+    pca_suite:
+        namespace: TheMarketingLab\PCA
+        psr4_prefix: TheMarketingLab\PCA
