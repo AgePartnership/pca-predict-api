@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\TheMarketingLab\PCA\CapturePlus;
+namespace spec\TheMarketingLab\PCA\CapturePlus\InteractiveFind;
 
-use TheMarketingLab\PCA\CapturePlus\InteractiveFindClient;
-use TheMarketingLab\PCA\CapturePlus\InteractiveFindResultInterface;
+use TheMarketingLab\PCA\CapturePlus\InteractiveFind\Client;
+use TheMarketingLab\PCA\CapturePlus\InteractiveFind\ResultInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class InteractiveFindClientSpec extends ObjectBehavior
+class ClientSpec extends ObjectBehavior
 {
     private $country = 'GBR';
     private $lang = 'EN';
@@ -22,7 +22,7 @@ class InteractiveFindClientSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType(InteractiveFindClient::class);
+        $this->shouldHaveType(Client::class);
     }
 
     function it_finds_results(PCASoapClient $soapClient)
@@ -45,10 +45,10 @@ class InteractiveFindClientSpec extends ObjectBehavior
         ];
         $results = $this->find($options);
         $results->shouldHaveCount(2);
-        $results[0]->shouldImplement(InteractiveFindResultInterface::class);
+        $results[0]->shouldImplement(ResultInterface::class);
         $results[0]->getId()->shouldReturn("GBR|53117813");
         $results[0]->getText()->shouldReturn("HX7 7BY, The Spacebar, St. Georges Street, Hebden Bridge ");
-        $results[1]->shouldImplement(InteractiveFindResultInterface::class);
+        $results[1]->shouldImplement(ResultInterface::class);
         $results[1]->getId()->shouldReturn("GBR|11328205");
         $results[1]->getText()->shouldReturn("HX7 7BY, The Town Hall, St. Georges Street, Hebden Bridge ");
     }

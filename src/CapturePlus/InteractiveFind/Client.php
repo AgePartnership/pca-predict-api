@@ -1,10 +1,10 @@
 <?php
 
-namespace TheMarketingLab\PCA\CapturePlus;
+namespace TheMarketingLab\PCA\CapturePlus\InteractiveFind;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class InteractiveFindClient
+class Client
 {
     private $soapClient;
     private $key;
@@ -41,7 +41,7 @@ class InteractiveFindClient
         $response = $this->soapClient->CapturePlus_Interactive_Find_v2_10($params);
         $results = [];
         foreach ($response->CapturePlus_Interactive_Find_v2_10_Result->CapturePlus_Interactive_Find_v2_10_Results as $result) {
-            $results[] = new InteractiveFindResult(
+            $results[] = new Result(
                 $result->Id,
                 $result->Text
             );

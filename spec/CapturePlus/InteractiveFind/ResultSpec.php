@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\TheMarketingLab\PCA\CapturePlus;
+namespace spec\TheMarketingLab\PCA\CapturePlus\InteractiveFind;
 
-use TheMarketingLab\PCA\CapturePlus\InteractiveFindResult;
-use TheMarketingLab\PCA\CapturePlus\InteractiveFindResultInterface;
+use TheMarketingLab\PCA\CapturePlus\InteractiveFind\Result;
+use TheMarketingLab\PCA\CapturePlus\InteractiveFind\ResultInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class InteractiveFindResultSpec extends ObjectBehavior
+class ResultSpec extends ObjectBehavior
 {
     function let()
     {
@@ -15,8 +15,8 @@ class InteractiveFindResultSpec extends ObjectBehavior
     }
     function it_is_initializable()
     {
-        $this->shouldHaveType(InteractiveFindResult::class);
-        $this->shouldImplement(InteractiveFindResultInterface::class);
+        $this->shouldHaveType(Result::class);
+        $this->shouldImplement(ResultInterface::class);
     }
 
     function it_should_have_an_id()

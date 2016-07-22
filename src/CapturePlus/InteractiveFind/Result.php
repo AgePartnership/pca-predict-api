@@ -1,8 +1,8 @@
 <?php
 
-namespace TheMarketingLab\PCA\CapturePlus;
+namespace TheMarketingLab\PCA\CapturePlus\InteractiveFind;
 
-class InteractiveFindResult implements InteractiveFindResultInterface
+class Result implements ResultInterface
 {
     private $id;
     private $text;
