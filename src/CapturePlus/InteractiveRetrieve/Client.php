@@ -2,10 +2,37 @@
 
 namespace TheMarketingLab\PCA\CapturePlus\InteractiveRetrieve;
 
+use TheMarketingLab\PCA\CapturePlus\InteractiveFind\Result;
+
 class Client
 {
-    public function retrieve($argument1)
+    private $soapClient;
+    private $key;
+
+    public function __construct(\SoapClient $soapClient, $key)
     {
-        // TODO: write logic here
+        $this->soapClient = $soapClient;
+        $this->key = $key;
+    }
+
+    public function retrieve(Result $findResult)
+    {
+        $params = [
+            'Key' => $this->key,
+            'Id' => $findResult->getId()
+        ];
+        $response = $this->soapClient->CapturePlus_Interactive_Retrieve_v2_10($params);
+        $result = $response->CapturePlus_Interactive_Retrieve_v2_10_Result->CapturePlus_Interactive_Retrieve_v2_10_Results;
+        // Hack to convert Object to Array
+        $result = json_decode(json_encode($result), true);
+        $address = [];
+        foreach ($result as $key => $value) {
+            $correctedKey = $key;
+            if ($key !== "POBoxNumber") {
+                $correctedKey = lcfirst($key);
+            }
+            $address[$correctedKey] = $value;
+        }
+        return new Address($address);
     }
 }

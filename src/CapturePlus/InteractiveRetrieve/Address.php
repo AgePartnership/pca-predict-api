@@ -5,7 +5,7 @@ namespace TheMarketingLab\PCA\CapturePlus\InteractiveRetrieve;
 class Address
 {
     private $id;
-    public function __construct($options)
+    public function __construct(array $options)
     {
         $this->id = $options["id"];
         $this->domesticId = $options["domesticId"];
