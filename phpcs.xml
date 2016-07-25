@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard">
+
+ <!--
+    The name attribute of the ruleset tag is displayed
+    when running PHP_CodeSniffer with the -v command line
+    argument. The description tag below is not displayed anywhere
+    except in this file, so it can contain information for
+    developers who may change this file in the future.
+ -->
+ <description>A custom coding standard</description>
+ <rule ref="PSR1"/>
+ <rule ref="PSR2"/>
+ <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+    <exclude-pattern>*/spec/*</exclude-pattern>
+ </rule>
+ <rule ref="Squiz.Scope.MethodScope.Missing">
+    <exclude-pattern>*/spec/*</exclude-pattern>
+ </rule>
+
+</ruleset>
