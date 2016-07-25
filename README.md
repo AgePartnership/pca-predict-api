@@ -10,7 +10,7 @@ It currently implements:
 
 The package is available on packagist.org
 
-`composer require themarketinglab/themarketinglab/pca-predict-api`
+`composer require themarketinglab/pca-predict-api`
 
 ## Usage
 
