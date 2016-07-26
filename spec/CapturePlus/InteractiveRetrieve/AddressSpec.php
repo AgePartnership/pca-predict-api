@@ -207,4 +207,53 @@ UNITED KINGDOM");
     {
       $this->getDataLevel()->shouldReturn("Premise");
     }
+
+    function it_has_a_formatted_address_without_postcode()
+    {
+        $params = array(
+            'id' => 'GB|RM|A|52509479',
+            'domesticId' => '52509479',
+            'language' => 'ENG',
+            'languageAlternatives' => 'ENG',
+            'department' => 'Sales',
+            'company' => 'Postcode Anywhere (Europe) Ltd',
+            'subBuilding' => 'Test',
+            'buildingNumber' => "",
+            'buildingName' => "Waterside",
+            'secondaryStreet' => "Second Lane",
+            'street' => 'Basin Road',
+            'block' => 'ABC',
+            'neighbourhood' => 'Place',
+            'district' => 'District place',
+            'city' => 'Worcester',
+            'line1' => 'Waterside',
+            'line2' => 'Basin Road',
+            'line3' => '',
+            'line4' => '',
+            'line5' => '',
+            'adminAreaName' => 'Worchestershire',
+            'adminAreaCode' => 'ABC',
+            'province' => 'Worchestershire',
+            'provinceName' => 'Worchestershire',
+            'provinceCode' => 'WOR',
+            'postalCode' => 'WR5 3DA',
+            'countryName' => 'United Kingdom',
+            'countryIso2' => 'GB',
+            'countryIso3' => 'GBR',
+            'sortingNumber1' => '94142',
+            'sortingNumber2' => '45678',
+            'barcode' => '(WR53DA1PX)',
+            'POBoxNumber' => '34567',
+            'label' => "Postcode Anywhere (Europe) Ltd
+Waterside
+Basin Road
+WORCESTER
+WR5 3DA
+UNITED KINGDOM",
+            'type' => 'Commercial',
+            'dataLevel' => 'Premise'
+        );
+        $this->beConstructedWith($params);
+        $this->getFormattedAddressWithoutPostcode()->shouldReturn("{$params['company']}, {$params['line1']}, {$params['line2']}, {$params['city']}, {$params['province']}");
+    }
 }

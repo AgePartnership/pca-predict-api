@@ -199,4 +199,25 @@ class Address
     {
         return $this->dataLevel;
     }
+
+    public function getFormattedAddressWithoutPostcode()
+    {
+        $values = array();
+        $functions = array(
+            'getCompany',
+            'getLine1',
+            'getLine2',
+            'getLine3',
+            'getLine4',
+            'getLine5',
+            'getCity',
+            'getProvince'
+        );
+        foreach ($functions as $f) {
+            if (!empty($this->$f())) {
+                $values[] = $this->$f();
+            }
+        }
+        return implode(', ', $values);
+    }
 }
