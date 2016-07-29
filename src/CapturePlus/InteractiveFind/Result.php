@@ -22,4 +22,10 @@ class Result implements ResultInterface
     {
         return $this->text;
     }
+
+    public function getTextWithoutPostcode()
+    {
+        list($postcode, $address) = explode(',', $this->getText(), 2);
+        return trim($address);
+    }
 }
