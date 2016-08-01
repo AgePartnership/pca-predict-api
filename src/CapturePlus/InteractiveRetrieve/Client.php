@@ -17,15 +17,15 @@ class Client
 
     public function retrieve(Result $findResult)
     {
-        $params = [
+        $params = array(
             'Key' => $this->key,
             'Id' => $findResult->getId()
-        ];
+        );
         $response = $this->soapClient->CapturePlus_Interactive_Retrieve_v2_10($params);
         $result = $response->CapturePlus_Interactive_Retrieve_v2_10_Result->CapturePlus_Interactive_Retrieve_v2_10_Results;
         // Hack to convert Object to Array
         $result = json_decode(json_encode($result), true);
-        $address = [];
+        $address = array();
         foreach ($result as $key => $value) {
             $correctedKey = $key;
             if ($key !== "POBoxNumber") {

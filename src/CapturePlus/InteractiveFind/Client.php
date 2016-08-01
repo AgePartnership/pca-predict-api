@@ -17,19 +17,19 @@ class Client
     public function find(array $options)
     {
         $resolver = new OptionsResolver();
-        $resolver->setDefaults([
+        $resolver->setDefaults(array(
             'filter' => 'PostalCodes',
             'country' => 'GBR',
             'lang' => 'EN',
             'maxSuggestions' => 7,
             'maxResults' => 100
-        ]);
+        ));
         $resolver->setDefined('search');
         $resolver->setRequired('search');
 
         $options = $resolver->resolve($options);
 
-        $params = [
+        $params = array(
             'Key' => $this->key,
             'SearchTerm' => $options['search'],
             'SearchFor' => $options['filter'],
@@ -37,9 +37,9 @@ class Client
             'LanguagePreference' => $options['lang'],
             'MaxSuggestions' => $options['maxSuggestions'],
             'MaxResults' => $options['maxResults']
-        ];
+        );
         $response = $this->soapClient->CapturePlus_Interactive_Find_v2_10($params);
-        $results = [];
+        $results = array();
         foreach ($response->CapturePlus_Interactive_Find_v2_10_Result->CapturePlus_Interactive_Find_v2_10_Results as $result) {
             $results[] = new Result(
                 $result->Id,
