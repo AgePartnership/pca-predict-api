@@ -33,4 +33,9 @@ class ResultSpec extends ObjectBehavior
     {
         $this->getTextWithoutPostcode()->shouldBe("The Town Hall, St. Georges Street, Hebden Bridge");
     }
+
+    function it_should_have_postcode()
+    {
+        $this->getPostcode()->shouldBe('HX7 7BY');
+    }
 }

@@ -23,9 +23,18 @@ class Result implements ResultInterface
         return $this->text;
     }
 
+    private function splitText()
+    {
+        return explode(',', $this->getText(), 2);
+    }
+
     public function getTextWithoutPostcode()
     {
-        list($postcode, $address) = explode(',', $this->getText(), 2);
-        return trim($address);
+        return trim($this->splitText()[1]);
+    }
+
+    public function getPostcode()
+    {
+        return trim($this->splitText()[0]);
     }
 }
