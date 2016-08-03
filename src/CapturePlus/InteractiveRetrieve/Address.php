@@ -214,8 +214,9 @@ class Address
             'getProvince'
         );
         foreach ($functions as $f) {
-            if (!empty($this->$f())) {
-                $values[] = $this->$f();
+            $value = $this->$f();
+            if (!empty($value)) {
+                $values[] = $value;
             }
         }
         return implode(', ', $values);
