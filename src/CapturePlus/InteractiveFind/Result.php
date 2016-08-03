@@ -30,11 +30,13 @@ class Result implements ResultInterface
 
     public function getTextWithoutPostcode()
     {
-        return trim($this->splitText()[1]);
+        $address = $this->splitText();
+        return trim($address[1]);
     }
 
     public function getPostcode()
     {
-        return trim($this->splitText()[0]);
+        $address = $this->splitText();
+        return trim($address[0]);
     }
 }
