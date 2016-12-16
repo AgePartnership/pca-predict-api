@@ -23,7 +23,7 @@ use TheMarketingLab\PCA\CapturePlus\InteractiveFind\Client as FindClient;
 use TheMarketingLab\PCA\CapturePlus\InteractiveRetrieve\Client as RetrieveClient;
 
 $serviceKey = 'ABC';
-$findClient = new FindClient(\SoapClient('https://services.postcodeanywhere.co.uk/CapturePlus/Interactive/Find/v2.10/wsdlnew.ws'), $apiKey);
+$findClient = new FindClient(new \SoapClient('https://services.postcodeanywhere.co.uk/CapturePlus/Interactive/Find/v2.10/wsdlnew.ws'), $apiKey);
 
 // All parameters are optional apart from search
 $params = [
@@ -39,7 +39,7 @@ $results = $findClient->find($params);
 
 // Get full address
 
-$retrieveClient = new RetrieveClient(\SoapClient("https://services.postcodeanywhere.co.uk/CapturePlus/Interactive/Retrieve/v2.10/wsdlnew.ws"), $apiKey);
+$retrieveClient = new RetrieveClient(new \SoapClient("https://services.postcodeanywhere.co.uk/CapturePlus/Interactive/Retrieve/v2.10/wsdlnew.ws"), $apiKey);
 
 // This returns an TheMarketingLab\PCA\CapturePlus\InteractiveRetrieve\Address object
 $address = $retrieveClient->retrieve($results[0]);

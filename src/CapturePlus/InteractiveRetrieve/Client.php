@@ -23,6 +23,9 @@ class Client
         );
         $response = $this->soapClient->CapturePlus_Interactive_Retrieve_v2_10($params);
         $result = $response->CapturePlus_Interactive_Retrieve_v2_10_Result->CapturePlus_Interactive_Retrieve_v2_10_Results;
+        if (is_array($result)) {
+            $result = $result[0];
+        }
         // Hack to convert Object to Array
         $result = json_decode(json_encode($result), true);
         $address = array();
